@@ -11,18 +11,33 @@ html, body {
   align-items: center;
   justify-content: center;
   background: salmon; }
-  .container .calculator {
-    border: 1px solid black;
-    width: 300px;
-    height: 400px;
-    position: relative; }
-    .container .calculator .entry {
-      height: 100px;
-      width: 100%;
-      outline: none;
-      box-sizing: border-box; }
-    .container .calculator .buttons {
-      display: flex;
-      flex-wrap: wrap; }
-    .container .calculator button {
-      width: 25%; }
+
+.calc {
+  height: auto;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap; }
+  .calc__entry {
+    height: 100px;
+    font-size: 3em;
+    outline: none;
+    width: 100%;
+    direction: rtl; }
+  .calc__num {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap; }
+    .calc__num--btn {
+      width: calc(100% / 3);
+      flex-grow: 1; }
+  .calc__operation {
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap; }
+    .calc__operation--btn {
+      flex-grow: 1;
+      width: 100%; }
+
+.calc__num,
+.calc__operation {
+  height: 250px; }
