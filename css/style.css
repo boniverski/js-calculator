@@ -41,3 +41,6 @@ html, body {
 .calc__num,
 .calc__operation {
   height: 250px; }
+
+.hidden {
+  display: none; }
