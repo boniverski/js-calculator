@@ -12,17 +12,28 @@ html, body {
   justify-content: center;
   background: salmon; }
 
+#entry,
+#tempEntry {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  height: 50px; }
+
+#tempEntry {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
+
 .calc {
   height: auto;
   width: 300px;
   display: flex;
   flex-wrap: wrap; }
   .calc__entry {
-    height: 100px;
+    background: white;
     font-size: 3em;
     outline: none;
-    width: 100%;
-    direction: rtl; }
+    width: 100%; }
   .calc__num {
     width: 75%;
     display: flex;

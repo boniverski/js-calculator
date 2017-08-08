@@ -1,59 +1,56 @@
-$(document).ready(function() {
-  let tempEntry = ""; // Temporary entry value
-  let entries = []; // Final entry before calculation
+$(document).ready(function(){
+  let entries = "";
+  let tempEntry = [];
 
   $("button").on("click", function() {
     let val = $(this).val();
 
-    // Returning numbers in calculator's entry
     if(!isNaN(val) || val === "." || val === "-"){
-      tempEntry += val;
-      $("#entry").val(tempEntry.substring(0,10));
-     // Clearing temporary entry value on DEL click
-    } else if (val === "clr"){
-        $(".clr").addClass("hidden");
-        $(".del").removeClass("hidden");
-        $("#entry").val("");
-        // Clearing all entries
-        entries = [];
-        tempEntry = "";
-    // Removing last number or sign from entry
-    } else if (val === "del"){
-        $("#entry").val(
-          function(index, value){
-            tempEntry = value.substr(0, value.length - 1);
-            return value.substr(0, value.length - 1);
-          }
-        );
-        $(".clr").addClass("hidden");
-        $(".del").removeClass("hidden");
-    //Pushing math signs
+      if((val === ".") && (tempEntry.length === 0)) {
+        tempEntry.push(0)
+      } tempEntry.push(val);
+
     } else if (val === "/" || val === "*" || val === "+"){
         if(tempEntry.length > 0) {
-          entries.push(tempEntry); // Pushing number entered before math sign
-          entries.push(val);
-        } else {
-          entries = ["0", val]; // If math sing is entered before number
+          //$("#tempEntry").text(val);
+          tempEntry.push(val);
+       } else {
+          tempEntry.push(0);
+          tempEntry.push(val); // If math sing is entered before number
         }
-        tempEntry = "";
-    // Calculation logic
-    } else if (val === '=') {
+
+    } else if (val === "del"){ tempEntry.pop(); }
+      else if (val === "=") {
         $(".del").addClass("hidden");
         $(".clr").removeClass("hidden");
-      	entries.push(tempEntry); // Pushing all entries into array
-        let convertedEntry = entries.join(" "); // Than joining all entries into string
-        console.log(`Input entry: ${convertedEntry}`);
+
+        let expression = tempEntry.join("");
+        tempEntry = [];
+        console.log(`Input entry: ${expression}`);
 
         // Checking if evaluation has error due to odd entries
         try {
-          let result = eval(convertedEntry); // Evaluate string with entries
-          $("#entry").val(result);
+          let result = eval(expression); // Evaluate string with entries
+          $("#entry").text(result);
           console.log(`Result: ${result}`);
         } catch (e){
             if (e instanceof SyntaxError){
-              $("#entry").val("NaN");
+              $("#entry").html("NaN");
             }
         }
-      }
+
+    } else if (val === "clr"){
+        // Clearing all entries
+        entries = "";
+        tempEntry = [];
+        console.clear();
+
+        $("#entry").text("0");
+        $(".clr").addClass("hidden");
+        $(".del").removeClass("hidden");
+    }
+    //printing final result or default value of "0" if tempEntry is empty array
+    tempEntry.length > 0 ?
+      $("#tempEntry").text(tempEntry.join("")) : $("#tempEntry").text("0");
   });
 });
