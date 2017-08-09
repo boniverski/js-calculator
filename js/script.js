@@ -51,7 +51,7 @@ $(document).ready(function(){
           console.log(`Result: ${result}`);
         } catch (e){
             if (e instanceof SyntaxError){
-              $("#entry").html("Bad Expression").css("color", "#FF4335");
+              $("#entry").html("Bad expression").css("color", "#FF4335");
             }
         }
 

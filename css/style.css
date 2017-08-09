@@ -1,7 +1,8 @@
 html, body {
   height: 100%;
   margin: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Lato"; }
 
 .container {
   background: #ffde3c;
@@ -23,11 +24,14 @@ html, body {
   transition: all 0.3s ease;
   text-align: right; }
 
+#entry {
+  font-size: 0.8555em; }
+
 #tempEntry {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 0.6em;
+  font-size: 0.555em;
   padding: 0.2em 0; }
 
 button {
