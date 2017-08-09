@@ -2,19 +2,28 @@ $(document).ready(function(){
   let entries = "";
   let tempEntry = [];
 
+  function defaultStyle(){
+    $(".clr").addClass("hidden");
+    $(".del").removeClass("hidden");
+    $("#entry").text("0");
+    $("#entry").css({"color": "", "height":"50%", "padding-top":""});
+    $("#tempEntry").removeClass("hidden");
+  }
+
   $("button").on("click", function() {
     let val = $(this).val();
 
     if(!isNaN(val) || val === "." || val === "-"){
+      defaultStyle();
+
       if((val === ".") && (tempEntry.length === 0)) {
         tempEntry.push(0)
       } tempEntry.push(val);
 
-    } else if (val === "/" || val === "*" || val === "+"){
+    } else if (val === "/" || val === "*" || val === "+" || val==="-"){
         if(tempEntry.length > 0) {
-          //$("#tempEntry").text(val);
           tempEntry.push(val);
-       } else {
+      } else {
           tempEntry.push(0);
           tempEntry.push(val); // If math sing is entered before number
         }
@@ -23,6 +32,13 @@ $(document).ready(function(){
       else if (val === "=") {
         $(".del").addClass("hidden");
         $(".clr").removeClass("hidden");
+        $("#tempEntry").addClass("hidden");
+        $("#entry").css({"height":"100%", "padding-top":"0.5em"});
+
+        let lastEntry = tempEntry[tempEntry.length - 1];
+        if(lastEntry === "/" || lastEntry === "*" || lastEntry === "+" || lastEntry ==="-") {
+          tempEntry.pop();
+        }
 
         let expression = tempEntry.join("");
         tempEntry = [];
@@ -35,7 +51,7 @@ $(document).ready(function(){
           console.log(`Result: ${result}`);
         } catch (e){
             if (e instanceof SyntaxError){
-              $("#entry").html("NaN");
+              $("#entry").html("Bad Expression").css("color", "#FF4335");
             }
         }
 
@@ -44,10 +60,7 @@ $(document).ready(function(){
         entries = "";
         tempEntry = [];
         console.clear();
-
-        $("#entry").text("0");
-        $(".clr").addClass("hidden");
-        $(".del").removeClass("hidden");
+        defaultStyle();
     }
     //printing final result or default value of "0" if tempEntry is empty array
     tempEntry.length > 0 ?

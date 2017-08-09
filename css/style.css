@@ -1,6 +1,11 @@
 html, body {
   height: 100%;
-  margin: 0; }
+  margin: 0;
+  box-sizing: border-box; }
+
+.container, footer {
+  background: #21294A;
+  color: #EDEDED; }
 
 .container {
   width: 100%;
@@ -8,50 +13,88 @@ html, body {
   padding: 0;
   margin: 0;
   display: flex;
+  flex-flow: column;
   align-items: center;
-  justify-content: center;
-  background: salmon; }
+  justify-content: center; }
 
 #entry,
 #tempEntry {
   box-shadow: none;
   margin: 0;
   padding: 0;
-  height: 50px; }
+  height: 50%;
+  transition: all 0.3s ease; }
 
 #tempEntry {
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap; }
+  white-space: nowrap;
+  font-size: 0.6em;
+  padding: 0.2em 0; }
+
+button {
+  border-style: none;
+  background: none;
+  outline: none; }
+
+.ui.segment {
+  background: none !important; }
 
 .calc {
+  color: #EDEDED;
+  background: white;
   height: auto;
   width: 300px;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1); }
   .calc__entry {
-    background: white;
+    padding: 0 0.2em;
+    height: 100px;
+    color: #434343;
     font-size: 3em;
     outline: none;
-    width: 100%; }
+    width: 100%;
+    z-index: 1; }
   .calc__num {
+    background: #213152;
     width: 75%;
     display: flex;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    z-index: 2; }
     .calc__num--btn {
       width: calc(100% / 3);
-      flex-grow: 1; }
+      flex-grow: 2;
+      transition: all 0.1s ease; }
+      .calc__num--btn:hover {
+        background: #384c72; }
+      .calc__num--btn:active {
+        background: #3c5075; }
   .calc__operation {
+    background-color: #39CEE7;
     width: 25%;
     display: flex;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    z-index: 1; }
     .calc__operation--btn {
       flex-grow: 1;
-      width: 100%; }
+      width: 100%;
+      transition: all 0.1s ease; }
+      .calc__operation--btn:hover {
+        background: #33b7cc; }
+      .calc__operation--btn:active {
+        background: #35c0d6; }
 
 .calc__num,
 .calc__operation {
-  height: 250px; }
+  height: 250px;
+  font-size: 1.2em;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 1px 10px rgba(0, 0, 0, 0.2); }
+
+footer {
+  bottom: 1em;
+  position: absolute;
+  text-align: center; }
 
 .hidden {
   display: none; }
