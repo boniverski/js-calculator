@@ -1,5 +1,3 @@
-/********* VARIABLES ********/
-/****************************/
 /*********** BASE ***********/
 html, body {
   height: 100%;
@@ -25,7 +23,8 @@ html, body {
   padding: 0;
   height: 50%;
   transition: all 0.3s ease;
-  text-align: right; }
+  text-align: right;
+  padding: 0.05em 0; }
 
 #entry {
   font-size: 0.8555em; }
@@ -34,8 +33,7 @@ html, body {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 0.555em;
-  padding: 0.2em 0; }
+  font-size: 0.555em; }
 
 button {
   border-style: none;
@@ -47,7 +45,6 @@ button {
 .hidden {
   display: none; }
 
-/****************************/
 /***** CALCULATOR STYLE *****/
 .calc {
   background: #EDEDED;
